@@ -1,10 +1,9 @@
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import 'yup-phone';
-import { nanoid } from 'nanoid';
 import { Forma, Input, Label, Error, Btn } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 import { getContacts } from 'redux/selectors';
 
 const schema = yup.object().shape({
@@ -32,7 +31,6 @@ export const ContactForm = () => {
       return;
     }
     const contactItem = {
-      id: nanoid(),
       name,
       number,
     };
