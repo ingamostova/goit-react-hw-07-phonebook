@@ -25,19 +25,25 @@ export const App = () => {
       <Section title="Phonebook">
         <ContactForm />
       </Section>
-      {isLoading && !error ? (
-        <b>Request in progress...</b>
+      {error && !isLoading ? (
+        error
       ) : (
-        <Section title="Contacts">
-          {contacts.length > 0 ? (
-            <>
-              <Filter />
-              <ContactList />
-            </>
+        <div>
+          {isLoading && !error ? (
+            <b>Request in progress...</b>
           ) : (
-            <Notification message="Ooops, there is no contact in your phonebook" />
+            <Section title="Contacts">
+              {contacts.length > 0 ? (
+                <>
+                  <Filter />
+                  <ContactList />
+                </>
+              ) : (
+                <Notification message="Ooops, there is no contact in your phonebook" />
+              )}
+            </Section>
           )}
-        </Section>
+        </div>
       )}
     </Container>
   );
